@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings
+.idea
+*.iml
+*.class
+target
+.DS_Store
+settings.xml
+.tern-project

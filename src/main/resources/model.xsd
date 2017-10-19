@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://employeetracking.co.za/model"
+           xmlns:tns="http://employeetracking.co.za/model"
+           elementFormDefault="qualified">
+
+    <element name="ScannerQueryModel">
+            <complexType>
+                 <sequence>
+                     <element name="id" type="long"></element>
+                     <element name="user_"
+                 </sequence>
+            </complexType>
+    </element>
+
+</schema>
