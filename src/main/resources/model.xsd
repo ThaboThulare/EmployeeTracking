@@ -11,26 +11,148 @@ and open the template in the editor.
         xmlns:tns="http://employeetracking.co.za/model"
         elementFormDefault="qualified">
 
-    <element name="UserDetailQueryModel" type="tns:UserDetailQueryModel"/>
-    <complexType name="UserDetailQueryModel">
+    <element name="EntityTypeQueryModel" type="tns:EntityTypeQueryModel" />
+    <complexType name="EntityTypeQueryModel">
         <sequence>
             <element name="id" type="long"></element>
-            <element name="name" type="string"></element>
-            <element name="lastName" type="string"></element>
-            <element name="idNumber" type="string"></element>
+            <element name="entityTypeDesc" type="string"></element>
+        </sequence>
+    </complexType>
+        
+    <element name="UserRoleQueryModel" type="tns:UserRoleQueryModel" />
+    <complexType name="UserRoleQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="roleDesc" type="string"></element>
+        </sequence>
+    </complexType>
+        
+    <element name="EntityRoleQueryModel" type="tns:EntityRoleQueryModel" />
+    <complexType name="EntityRoleQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="userRole"   minOccurs="0" maxOccurs="1"
+                     type="tns:UserRoleQueryModel"/>
+            <element name="entityType"  minOccurs="0" maxOccurs="1"
+                     type="tns:EntityTypeQueryModel">
+            </element>
         </sequence>
     </complexType>
 
-    <element name="ScannerQueryModel">
-        <complexType>
-            <sequence>
-                <element name="id" type="long"></element>
-                <element name="loginTime" type="string"></element>
-                <element name="logoutTime" type="string"></element>
-                <element name="userDetails" minOccurs="0" maxOccurs="1" type="tns:UserDetailQueryModel"></element>
-            </sequence>
+    <element name="StatusQueryModel" type="tns:StatusQueryModel" />
+    <complexType name="StatusQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="statusDesc" type="string"></element>
+        </sequence>
+    </complexType>
+    
+    
+    <element name="VanueQueryModel" type="tns:VanueQueryModel" />
+    <complexType name="VanueQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="vanueDesc" type="string"></element>
+        </sequence>
+    </complexType>
+    
+    
+    
+    <element name="SubjectQueryModel" type="tns:SubjectQueryModel" />
+    <complexType name="SubjectQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="subjectDesc" type="string"></element>
+        </sequence>
+    </complexType>
+    
+    
+    <element name="TimeTableQueryModel" type="tns:TimeTableQueryModel" />
+    <complexType name="TimeTableQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="startTime" type="string"></element>
+            <element name="endTime" type="string"></element>
+            <element name="vanue"  minOccurs="0" maxOccurs="1"
+                     type="tns:VanueQueryModel">
+            </element>
+            <element name="subject"  minOccurs="0" maxOccurs="1"
+                     type="tns:SubjectQueryModel">
+            </element>
+            <element name="status"  minOccurs="0" maxOccurs="1"
+                     type="tns:StatusQueryModel">
+            </element>
+
+        </sequence>
+    </complexType>
+    
+    
+    
+    <element name="EntityQueryModel" type="tns:EntityQueryModel" />
+    <complexType name="EntityQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="fistName" type="string"></element>
+            <element name="surname" type="string"></element>
+            <element name="idNumber" type="string"></element>
+            <element name="status"  minOccurs="0" maxOccurs="1"
+                     type="tns:StatusQueryModel">
+            </element>
+        </sequence>
+    </complexType>
+    
+    
+    
+    
+    	<element name="ClassListQueryModel" type="tns:ClassListQueryModel" />
+	<complexType name="ClassListQueryModel">
+		<sequence>
+			<element name="id" type="long" />
+			<element name="entity" minOccurs="0" maxOccurs="1"
+				type="tns:EntityQueryModel" />
+			<element name="status" minOccurs="0" maxOccurs="1"
+				type="tns:StatusQueryModel" />
+                        <element name="subject" minOccurs="0" maxOccurs="1"
+				type="tns:SubjectQueryModel" />
+                </sequence>
         </complexType>
-    </element>
-
-
+        
+        <element name="LectureSubjectListQueryModel" type="tns:LectureSubjectListQueryModel" />
+	<complexType name="LectureSubjectListQueryModel">
+		<sequence>
+			<element name="id" type="long" />
+			<element name="entity" minOccurs="0" maxOccurs="1"
+				type="tns:EntityQueryModel" />
+			<element name="status" minOccurs="0" maxOccurs="1"
+				type="tns:StatusQueryModel" />
+                        <element name="subject" minOccurs="0" maxOccurs="1"
+				type="tns:SubjectQueryModel" />
+                </sequence>
+        </complexType>
+        
+       <element name="logHistoryQueryModel" type="tns:logHistoryQueryModel" />
+	<complexType name="logHistoryQueryModel">
+		<sequence>
+			<element name="id" type="long" />
+                        <element name="timeIn" type="string" />
+                        <element name="timeOut" type="string" />
+			<element name="entity" minOccurs="0" maxOccurs="1"
+				type="tns:EntityQueryModel" />
+                        <element name="vanue" minOccurs="0" maxOccurs="1"
+				type="tns:VanueQueryModel" />
+                </sequence>
+        </complexType>
+        
+        
+       <element name="ScannerCommandModel">
+		<complexType>
+			<sequence>
+				<element name="entity" 
+                                         minOccurs="0" maxOccurs="1"
+                                         type="tns:EntityQueryModel">
+                                </element>
+			</sequence>
+		</complexType>
+	</element>
+                        
 </schema>

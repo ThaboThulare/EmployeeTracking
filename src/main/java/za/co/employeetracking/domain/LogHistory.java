@@ -35,7 +35,7 @@ public class LogHistory
     @Column(name = "time_out")
     private DateTime timeOut;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "vanue_id")
     private Vanue vanue;
 

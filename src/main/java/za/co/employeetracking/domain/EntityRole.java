@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,7 +36,7 @@ public class EntityRole
     @JoinColumn(name = "user_role_id")
     private UserRole userRole;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "entity_id")
     private Entity entity;
 
