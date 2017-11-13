@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -6,18 +6,31 @@ and open the template in the editor.
 -->
 
 <schema version="1.0"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://employeetracking.co.za/model"
-           xmlns:tns="http://employeetracking.co.za/model"
-           elementFormDefault="qualified">
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://employeetracking.co.za/model"
+        xmlns:tns="http://employeetracking.co.za/model"
+        elementFormDefault="qualified">
+
+    <element name="UserDetailQueryModel" type="tns:UserDetailQueryModel"/>
+    <complexType name="UserDetailQueryModel">
+        <sequence>
+            <element name="id" type="long"></element>
+            <element name="name" type="string"></element>
+            <element name="lastName" type="string"></element>
+            <element name="idNumber" type="string"></element>
+        </sequence>
+    </complexType>
 
     <element name="ScannerQueryModel">
-            <complexType>
-                 <sequence>
-                     <element name="id" type="long"></element>
-                     <element name="user_"
-                 </sequence>
-            </complexType>
+        <complexType>
+            <sequence>
+                <element name="id" type="long"></element>
+                <element name="loginTime" type="string"></element>
+                <element name="logoutTime" type="string"></element>
+                <element name="userDetails" minOccurs="0" maxOccurs="1" type="tns:UserDetailQueryModel"></element>
+            </sequence>
+        </complexType>
     </element>
+
 
 </schema>

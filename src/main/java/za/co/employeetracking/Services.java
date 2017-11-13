@@ -8,11 +8,9 @@ package za.co.employeetracking;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author User
  */
 @RestController
-public class Services
-{
-      //To-do write services for employee tracking
+public class Services {
+    //To-do write services for employee tracking
 }

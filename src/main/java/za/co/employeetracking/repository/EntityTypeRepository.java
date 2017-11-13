@@ -6,13 +6,13 @@
 package za.co.employeetracking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import za.co.employeetracking.domain.UserRole;
+import za.co.employeetracking.domain.EntityType;
 
 /**
  *
  * @author User
  */
-public interface UserRoleRepository extends JpaRepository<UserRole, Long>
+public interface EntityTypeRepository extends JpaRepository<EntityType, Long>
 {
     
 }

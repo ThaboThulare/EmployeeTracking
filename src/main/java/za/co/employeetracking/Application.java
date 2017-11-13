@@ -11,16 +11,15 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.jms.annotation.EnableJms;
 
 /**
- *
  * @author User
  */
 @SpringBootApplication
 @EnableJms
 @ImportResource(value = {"classpath:security.xml"})
 public class Application {
-	
-	public static void main(String args[]){
-		SpringApplication.run(Application.class, args);
-	}
+
+    public static void main(String args[]) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }

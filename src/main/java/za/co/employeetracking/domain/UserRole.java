@@ -2,18 +2,17 @@ package za.co.employeetracking.domain;
 
 import javax.persistence.*;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "user_role")
-public class UserRole
-{
+public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long Id;
 
-    @Column(name = "user_role_description")
-    private String user_desc;
+    @Column(name = "role_desc")
+    private String roleDesc;
 
     public Long getId() {
         return Id;
@@ -23,11 +22,15 @@ public class UserRole
         Id = id;
     }
 
-    public String getUser_desc() {
-        return user_desc;
+    public String getRoleDesc()
+    {
+        return roleDesc;
     }
 
-    public void setUser_desc(String user_desc) {
-        this.user_desc = user_desc;
+    public void setRoleDesc(String roleDesc)
+    {
+        this.roleDesc = roleDesc;
     }
+
+    
 }

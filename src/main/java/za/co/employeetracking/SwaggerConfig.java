@@ -5,23 +5,20 @@
  */
 package za.co.employeetracking;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import com.wordnik.swagger.model.ApiInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- *
  * @author User
  */
 @Configuration
 @EnableSwagger
-public class SwaggerConfig
-{
+public class SwaggerConfig {
     @Autowired
     private SpringSwaggerConfig springSwaggerConfig;
 

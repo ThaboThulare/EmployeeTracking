@@ -2,10 +2,9 @@ package za.co.employeetracking.domain;
 
 import javax.persistence.*;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "login")
-public class Login
-{
+public class Login {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

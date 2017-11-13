@@ -6,13 +6,13 @@
 package za.co.employeetracking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import za.co.employeetracking.domain.UserRole;
+import za.co.employeetracking.domain.LectureSubjectList;
 
 /**
  *
  * @author User
  */
-public interface UserRoleRepository extends JpaRepository<UserRole, Long>
+public interface LectureSubjectListRepository extends JpaRepository<LectureSubjectList, Long>
 {
     
 }
