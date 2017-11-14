@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author User
  */
-@Configuration
 @EnableSwagger
 public class SwaggerConfig {
     @Autowired

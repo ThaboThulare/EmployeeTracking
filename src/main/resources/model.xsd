@@ -10,15 +10,7 @@ and open the template in the editor.
         targetNamespace="http://employeetracking.co.za/model"
         xmlns:tns="http://employeetracking.co.za/model"
         elementFormDefault="qualified">
-
-    <element name="EntityTypeQueryModel" type="tns:EntityTypeQueryModel" />
-    <complexType name="EntityTypeQueryModel">
-        <sequence>
-            <element name="id" type="long"></element>
-            <element name="entityTypeDesc" type="string"></element>
-        </sequence>
-    </complexType>
-        
+      
     <element name="UserRoleQueryModel" type="tns:UserRoleQueryModel" />
     <complexType name="UserRoleQueryModel">
         <sequence>
@@ -26,28 +18,7 @@ and open the template in the editor.
             <element name="roleDesc" type="string"></element>
         </sequence>
     </complexType>
-        
-    <element name="EntityRoleQueryModel" type="tns:EntityRoleQueryModel" />
-    <complexType name="EntityRoleQueryModel">
-        <sequence>
-            <element name="id" type="long"></element>
-            <element name="userRole"   minOccurs="0" maxOccurs="1"
-                     type="tns:UserRoleQueryModel"/>
-            <element name="entityType"  minOccurs="0" maxOccurs="1"
-                     type="tns:EntityTypeQueryModel">
-            </element>
-        </sequence>
-    </complexType>
 
-    <element name="StatusQueryModel" type="tns:StatusQueryModel" />
-    <complexType name="StatusQueryModel">
-        <sequence>
-            <element name="id" type="long"></element>
-            <element name="statusDesc" type="string"></element>
-        </sequence>
-    </complexType>
-    
-    
     <element name="VanueQueryModel" type="tns:VanueQueryModel" />
     <complexType name="VanueQueryModel">
         <sequence>
@@ -55,9 +26,7 @@ and open the template in the editor.
             <element name="vanueDesc" type="string"></element>
         </sequence>
     </complexType>
-    
-    
-    
+
     <element name="SubjectQueryModel" type="tns:SubjectQueryModel" />
     <complexType name="SubjectQueryModel">
         <sequence>
@@ -79,14 +48,9 @@ and open the template in the editor.
             <element name="subject"  minOccurs="0" maxOccurs="1"
                      type="tns:SubjectQueryModel">
             </element>
-            <element name="status"  minOccurs="0" maxOccurs="1"
-                     type="tns:StatusQueryModel">
-            </element>
-
         </sequence>
     </complexType>
-    
-    
+       
     
     <element name="EntityQueryModel" type="tns:EntityQueryModel" />
     <complexType name="EntityQueryModel">
@@ -95,23 +59,18 @@ and open the template in the editor.
             <element name="fistName" type="string"></element>
             <element name="surname" type="string"></element>
             <element name="idNumber" type="string"></element>
-            <element name="status"  minOccurs="0" maxOccurs="1"
-                     type="tns:StatusQueryModel">
-            </element>
         </sequence>
     </complexType>
     
     
     
     
-    	<element name="ClassListQueryModel" type="tns:ClassListQueryModel" />
+    	<element name="StudentSubjectListQueryModel" type="tns:ClassListQueryModel" />
 	<complexType name="ClassListQueryModel">
 		<sequence>
 			<element name="id" type="long" />
 			<element name="entity" minOccurs="0" maxOccurs="1"
 				type="tns:EntityQueryModel" />
-			<element name="status" minOccurs="0" maxOccurs="1"
-				type="tns:StatusQueryModel" />
                         <element name="subject" minOccurs="0" maxOccurs="1"
 				type="tns:SubjectQueryModel" />
                 </sequence>
@@ -123,8 +82,6 @@ and open the template in the editor.
 			<element name="id" type="long" />
 			<element name="entity" minOccurs="0" maxOccurs="1"
 				type="tns:EntityQueryModel" />
-			<element name="status" minOccurs="0" maxOccurs="1"
-				type="tns:StatusQueryModel" />
                         <element name="subject" minOccurs="0" maxOccurs="1"
 				type="tns:SubjectQueryModel" />
                 </sequence>
@@ -134,8 +91,7 @@ and open the template in the editor.
 	<complexType name="logHistoryQueryModel">
 		<sequence>
 			<element name="id" type="long" />
-                        <element name="timeIn" type="string" />
-                        <element name="timeOut" type="string" />
+                        <element name="isAttended" type="boolean" />
 			<element name="entity" minOccurs="0" maxOccurs="1"
 				type="tns:EntityQueryModel" />
                         <element name="vanue" minOccurs="0" maxOccurs="1"

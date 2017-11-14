@@ -5,21 +5,26 @@
  */
 package za.co.employeetracking.domain;
 
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
  * @author User
  */
-@javax.persistence.Entity
-@Table(name = "entity")
-public class Entity
+@Entity
+@Table(name = "entity_class")
+public class EntityClass
 {
 
     @Id
@@ -40,8 +45,47 @@ public class Entity
     private String idNumber;
 
     @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
+    @JoinColumn(name = "user_role")
+    private UserRole userRole;
+
+    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LectureSubjectList> lectureSubjectList;
+
+    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<StudentSubjectList> studentSubjectList;
+
+    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LogHistory> logHistoryList;
+
+    public List<LectureSubjectList> getLectureSubjectList()
+    {
+        return lectureSubjectList;
+    }
+
+    public void setLectureSubjectList(List<LectureSubjectList> lectureSubjectList)
+    {
+        this.lectureSubjectList = lectureSubjectList;
+    }
+
+    public List<StudentSubjectList> getStudentSubjectList()
+    {
+        return studentSubjectList;
+    }
+
+    public void setStudentSubjectList(List<StudentSubjectList> studentSubjectList)
+    {
+        this.studentSubjectList = studentSubjectList;
+    }
+
+    public UserRole getUserRole()
+    {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole)
+    {
+        this.userRole = userRole;
+    }
 
     public Long getId()
     {
@@ -93,16 +137,13 @@ public class Entity
         this.idNumber = idNumber;
     }
 
-    public Status getStatus()
+    public List<LogHistory> getLogHistoryList()
     {
-        return status;
+        return logHistoryList;
     }
 
-    public void setStatus(Status status)
+    public void setLogHistoryList(List<LogHistory> logHistoryList)
     {
-        this.status = status;
+        this.logHistoryList = logHistoryList;
     }
-    
-    
-
 }

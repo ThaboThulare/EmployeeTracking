@@ -2,43 +2,15 @@ package za.co.employeetracking.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import za.co.employeetracking.domain.EntityRole;
-import za.co.employeetracking.domain.EntityType;
-import za.co.employeetracking.domain.Status;
 import za.co.employeetracking.domain.Subject;
 import za.co.employeetracking.domain.UserRole;
 import za.co.employeetracking.domain.Vanue;
-import za.co.employeetracking.model.EntityRoleQueryModel;
-import za.co.employeetracking.model.EntityTypeQueryModel;
-import za.co.employeetracking.model.StatusQueryModel;
 import za.co.employeetracking.model.SubjectQueryModel;
 import za.co.employeetracking.model.UserRoleQueryModel;
 import za.co.employeetracking.model.VanueQueryModel;
 
 public class Mapper
 {
-
-    public static EntityTypeQueryModel toEntityTypeQueryModel(EntityType from)
-    {
-        EntityTypeQueryModel entityType = new EntityTypeQueryModel();
-
-        entityType.setId(from.getId());
-        entityType.setEntityTypeDesc(from.getEntityTypeDesc());
-
-        return entityType;
-    }
-
-    public static List<EntityTypeQueryModel> toEnityTypeQueryModel(List<EntityType> fromList)
-    {
-        List<EntityTypeQueryModel> entityTypeQueryModels = new ArrayList<EntityTypeQueryModel>();
-
-        for (EntityType entityType : fromList)
-        {
-            entityTypeQueryModels.add(toEntityTypeQueryModel(entityType));
-        }
-
-        return entityTypeQueryModels;
-    }
 
     public static UserRoleQueryModel toUserRoleQueryModel(UserRole from)
     {
@@ -61,57 +33,7 @@ public class Mapper
         return userRoleQueryModels;
     }
 
-    public static EntityRoleQueryModel toEntityRoleQueryModel(EntityRole from)
-    {
-        EntityRoleQueryModel entityRoleQueryModel = new EntityRoleQueryModel();
-
-        UserRoleQueryModel userRole = new UserRoleQueryModel();
-        userRole.setId(from.getUserRole().getId());
-        userRole.setRoleDesc(from.getUserRole().getRoleDesc());
-        entityRoleQueryModel.setUserRole(userRole);
-
-        EntityTypeQueryModel entityType = new EntityTypeQueryModel();
-        entityType.setId(from.getEntityType().getId());
-        entityType.setEntityTypeDesc(from.getEntityType().getEntityTypeDesc());
-        entityRoleQueryModel.setEntityType(entityType);
-
-        return entityRoleQueryModel;
-    }
-
-    public static List<EntityRoleQueryModel> toEntityRoleQueryModel(List<EntityRole> fromList)
-    {
-        List<EntityRoleQueryModel> entityRoleQueryModels = new ArrayList<EntityRoleQueryModel>();
-
-        for (EntityRole entityRole : fromList)
-        {
-            entityRoleQueryModels.add(toEntityRoleQueryModel(entityRole));
-        }
-        return entityRoleQueryModels;
-    }
-
-    public static StatusQueryModel toStatusQueryModel(Status from)
-    {
-        StatusQueryModel statusQueryModel = new StatusQueryModel();
-
-        statusQueryModel.setId(from.getId());
-        statusQueryModel.setStatusDesc(from.getStatusDesc());
-
-        return statusQueryModel;
-    }
-
-    public static List<StatusQueryModel> toStatusQueryModel(List<Status> fromList)
-    {
-        List<StatusQueryModel> statusQueryModels = new ArrayList<StatusQueryModel>();
-
-        for (Status status : fromList)
-        {
-            statusQueryModels.add(toStatusQueryModel(status));
-        }
-        return statusQueryModels;
-    }
-    
-    
-        public static VanueQueryModel toVanueQueryModel(Vanue from)
+    public static VanueQueryModel toVanueQueryModel(Vanue from)
     {
         VanueQueryModel vanueQueryModel = new VanueQueryModel();
 
@@ -131,9 +53,8 @@ public class Mapper
         }
         return vanueQueryModels;
     }
-    
-    
-        public static SubjectQueryModel toSubjectQueryModel(Subject from)
+
+    public static SubjectQueryModel toSubjectQueryModel(Subject from)
     {
         SubjectQueryModel subjectQueryModel = new SubjectQueryModel();
 

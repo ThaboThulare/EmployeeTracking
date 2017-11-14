@@ -6,13 +6,13 @@
 package za.co.employeetracking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import za.co.employeetracking.domain.ClassList;
+import za.co.employeetracking.domain.StudentSubjectList;
 
 /**
  *
  * @author User
  */
-public interface ClassListRepository extends JpaRepository<ClassList, Long>
+public interface ClassListRepository extends JpaRepository<StudentSubjectList, Long>
 {
     
 }

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,17 +19,22 @@ import javax.persistence.Table;
  * @author User
  */
 @Entity
-@Table(name = "status")
-public class Status
+@Table(name = "student_subject_list")
+public class StudentSubjectList
 {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long Id;
 
-    @Column(name = "status_desc")
-    private String statusDesc;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "entity_id")
+    private EntityClass entityClass;
 
     public Long getId()
     {
@@ -39,13 +46,29 @@ public class Status
         this.Id = Id;
     }
 
-    public String getStatusDesc()
+
+    public Subject getSubject()
     {
-        return statusDesc;
+        return subject;
     }
 
-    public void setStatusDesc(String statusDesc)
+    public void setSubject(Subject subject)
     {
-        this.statusDesc = statusDesc;
+        this.subject = subject;
     }
+
+    public EntityClass getEntityClass()
+    {
+        return entityClass;
+    }
+
+    public void setEntityClass(EntityClass entityClass)
+    {
+        this.entityClass = entityClass;
+    }
+
+
+
+    
+    
 }

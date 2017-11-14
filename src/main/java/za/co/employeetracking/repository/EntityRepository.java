@@ -5,14 +5,14 @@
  */
 package za.co.employeetracking.repository;
 
-import javax.persistence.Entity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import za.co.employeetracking.domain.EntityClass;
 
 /**
  *
  * @author User
  */
-public interface EntityRepository extends JpaRepository<Entity, Long>
+public interface EntityRepository extends JpaRepository<EntityClass, Long>
 {
     
 }

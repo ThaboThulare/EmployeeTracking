@@ -5,11 +5,14 @@
  */
 package za.co.employeetracking.domain;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +21,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "status")
+@Table(name = "subject")
 public class Subject
 {
     @Id
@@ -28,10 +31,23 @@ public class Subject
     
     @Column(name = "subject_desc")
     private String subjectDesc;
+    
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+    private List<TimeTable> timeTableList;
 
     public Long getId()
     {
         return id;
+    }
+
+    public List<TimeTable> getTimeTableList()
+    {
+        return timeTableList;
+    }
+
+    public void setTimeTableList(List<TimeTable> timeTableList)
+    {
+        this.timeTableList = timeTableList;
     }
 
     public void setId(Long id)

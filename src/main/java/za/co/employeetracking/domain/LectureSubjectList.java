@@ -6,6 +6,7 @@
 package za.co.employeetracking.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  * @author User
  */
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "lecture_subject_list")
 public class LectureSubjectList
 {
@@ -28,16 +29,12 @@ public class LectureSubjectList
     private Long Id;
         
     @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
-
-    @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
     @ManyToOne
     @JoinColumn(name = "entity_id")
-    private Entity entity;
+    private EntityClass entityClass;
 
     public Long getId()
     {
@@ -47,16 +44,6 @@ public class LectureSubjectList
     public void setId(Long Id)
     {
         this.Id = Id;
-    }
-
-    public Status getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(Status status)
-    {
-        this.status = status;
     }
 
     public Subject getSubject()
@@ -69,15 +56,17 @@ public class LectureSubjectList
         this.subject = subject;
     }
 
-    public Entity getEntity()
+    public EntityClass getEntityClass()
     {
-        return entity;
+        return entityClass;
     }
 
-    public void setEntity(Entity entity)
+    public void setEntityClass(EntityClass entityClass)
     {
-        this.entity = entity;
+        this.entityClass = entityClass;
     }
+
+
     
     
 }
