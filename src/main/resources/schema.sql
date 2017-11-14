@@ -38,6 +38,15 @@ create table entity_class(
 
 );
 
+create table login (
+    id integer auto_increment not null primary key,
+    user_name varchar(32) not null, 
+    password varchar(32) not null,
+    enabled boolean not null,
+    entity_id integer not null,
+    constraint entity_class_fk5 foreign key (entity_id) references entity_class (id),
+
+);
 
 create table time_table(
     id integer auto_increment not null primary key,

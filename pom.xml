@@ -110,8 +110,12 @@
             <artifactId>spring-web</artifactId>
             <version>4.1.6.RELEASE</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>bouncycastle</groupId>
+            <artifactId>bcprov-jdk14</artifactId>
+            <version>138</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>

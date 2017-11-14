@@ -1,0 +1,63 @@
+<div class="container">
+
+
+    <div  class="row">
+        <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">First Name</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+                </div>
+
+
+
+                <label class="control-label" >Surname</label> 
+                <div class="inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="surname" placeholder="Surname" class="form-control"  type="text">
+                    </div>
+                </div>
+
+                <label class="control-label" >ID Number</label> 
+                <div class="inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="idNumber" placeholder="ID Number" class="form-control"  type="text">
+                    </div>
+                </div>
+
+                <label class="control-label">Gender</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="department" class="form-control selectpicker">
+                        <option value="">Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+                <label class="control-label">Gender</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="department" class="form-control selectpicker">
+                        <option value="">Role</option>
+                        <option value='1'>Admin</option>
+                        <option value='2'>Lecture</option>
+                        <option value='3'>Student</option>
+                    </select>
+                </div>
+                <br/>
+                <div >
+                    <button type="submit" form="form" class="btn btn-info"  ng-click="register(form)"
+                            >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

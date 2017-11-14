@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import scala.annotation.meta.field;
 import za.co.employeetracking.domain.EntityClass;
 import za.co.employeetracking.domain.LectureSubjectList;
 import za.co.employeetracking.domain.LogHistory;
@@ -151,6 +152,8 @@ public class Services
         return Mapper.toEntityQueryModel(entityClass);
     }
     
+    
+    
     @RequestMapping(value = "api/entities", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<EntityQueryModel> getAllEntities() throws ParseException
     {
@@ -188,7 +191,8 @@ public class Services
     @RequestMapping(value = "api/lectures", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LectureSubjectListQueryModel> getAllLectures() throws ParseException
     {
-        List<LectureSubjectList>lectureSubjectList = lectureSubjectListRepository.findAll();
+        List<LectureSubjectList> lectureSubjectList = lectureSubjectListRepository.findAll();
+        
         
         return Mapper.toLectureSubjectListQueryModel(lectureSubjectList);
     }
@@ -206,6 +210,12 @@ public class Services
     {
 
         return null;
+    }
+    
+    @RequestMapping(value = "api/regidter/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void registerNew(@PathVariable("id") Long id) throws ParseException
+    {
+        
     }
 
 }

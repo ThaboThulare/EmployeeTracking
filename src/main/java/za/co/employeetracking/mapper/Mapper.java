@@ -8,6 +8,7 @@ import za.co.employeetracking.domain.LogHistory;
 import za.co.employeetracking.domain.StudentSubjectList;
 import za.co.employeetracking.domain.Subject;
 import za.co.employeetracking.domain.TimeTable;
+import za.co.employeetracking.domain.User;
 import za.co.employeetracking.domain.UserRole;
 import za.co.employeetracking.domain.Vanue;
 import za.co.employeetracking.model.EntityClassCommandModel;
@@ -16,6 +17,7 @@ import za.co.employeetracking.model.LectureSubjectListQueryModel;
 import za.co.employeetracking.model.LogHistoryCommandModel;
 import za.co.employeetracking.model.StudentSubjectListQueryModel;
 import za.co.employeetracking.model.SubjectQueryModel;
+import za.co.employeetracking.model.UserQueryModel;
 import za.co.employeetracking.model.UserRoleQueryModel;
 import za.co.employeetracking.model.VanueQueryModel;
 
@@ -84,7 +86,7 @@ public class Mapper
         }
         return subjectQueryModels;
     }
-    
+
     public static EntityQueryModel toEntityQueryModel(EntityClass from)
     {
         EntityQueryModel entityQueryModel = new EntityQueryModel();
@@ -94,17 +96,19 @@ public class Mapper
         entityQueryModel.setFistName(from.getFirstName());
         entityQueryModel.setSurname(from.getSurname());
         entityQueryModel.setGender(from.getGender());
-        
+
         UserRoleQueryModel userRoleQueryModel = new UserRoleQueryModel();
         userRoleQueryModel.setId(from.getUserRole().getId());
         userRoleQueryModel.setRoleDesc(from.getUserRole().getRoleDesc());
+        
+        entityQueryModel.setUserRole(userRoleQueryModel);
 
         return entityQueryModel;
     }
 
     public static List<EntityQueryModel> toEntityQueryModel(List<EntityClass> fromList)
     {
-        List<EntityQueryModel>  entityQueryModels = new ArrayList<EntityQueryModel>();
+        List<EntityQueryModel> entityQueryModels = new ArrayList<EntityQueryModel>();
 
         for (EntityClass entityClass : fromList)
         {
@@ -112,35 +116,32 @@ public class Mapper
         }
         return entityQueryModels;
     }
-    
-    
-    
-     public static StudentSubjectListQueryModel toStudentSubjectListQueryModel(StudentSubjectList from)
+
+    public static StudentSubjectListQueryModel toStudentSubjectListQueryModel(StudentSubjectList from)
     {
         StudentSubjectListQueryModel studentSubjectListQueryModel = new StudentSubjectListQueryModel();
 
         studentSubjectListQueryModel.setId(from.getId());
-        
+
         EntityQueryModel entityQueryModel = new EntityQueryModel();
         entityQueryModel.setFistName(from.getEntityClass().getFirstName());
         entityQueryModel.setGender(from.getEntityClass().getGender());
         entityQueryModel.setId(from.getEntityClass().getId());
         entityQueryModel.setIdNumber(from.getEntityClass().getIdNumber());
         entityQueryModel.setSurname(from.getEntityClass().getSurname());
-        
+
         UserRoleQueryModel roleQueryModel = new UserRoleQueryModel();
         roleQueryModel.setId(from.getEntityClass().getUserRole().getId());
         roleQueryModel.setRoleDesc(from.getEntityClass().getUserRole().getRoleDesc());
-        
+
         entityQueryModel.setUserRole(roleQueryModel);
         studentSubjectListQueryModel.setEntity(entityQueryModel);
-        
+
         SubjectQueryModel subjectQueryModel = new SubjectQueryModel();
         subjectQueryModel.setId(from.getSubject().getId());
         subjectQueryModel.setSubjectDesc(from.getSubject().getSubjectDesc());
-        
+
         studentSubjectListQueryModel.setSubject(subjectQueryModel);
-        
 
         return studentSubjectListQueryModel;
     }
@@ -155,36 +156,32 @@ public class Mapper
         }
         return studentSubjectListQueryModels;
     }
-    
-    
-    
-    
-    public static LectureSubjectListQueryModel toLectureSubjectListQueryModel(LectureSubjectList  from)
+
+    public static LectureSubjectListQueryModel toLectureSubjectListQueryModel(LectureSubjectList from)
     {
         LectureSubjectListQueryModel lectureSubjectListQueryModel = new LectureSubjectListQueryModel();
 
         lectureSubjectListQueryModel.setId(from.getId());
-        
+
         EntityQueryModel entityQueryModel = new EntityQueryModel();
         entityQueryModel.setFistName(from.getEntityClass().getFirstName());
         entityQueryModel.setGender(from.getEntityClass().getGender());
         entityQueryModel.setId(from.getEntityClass().getId());
         entityQueryModel.setIdNumber(from.getEntityClass().getIdNumber());
         entityQueryModel.setSurname(from.getEntityClass().getSurname());
-        
+
         UserRoleQueryModel roleQueryModel = new UserRoleQueryModel();
         roleQueryModel.setId(from.getEntityClass().getUserRole().getId());
         roleQueryModel.setRoleDesc(from.getEntityClass().getUserRole().getRoleDesc());
-        
+
         entityQueryModel.setUserRole(roleQueryModel);
         lectureSubjectListQueryModel.setEntity(entityQueryModel);
-        
+
         SubjectQueryModel subjectQueryModel = new SubjectQueryModel();
         subjectQueryModel.setId(from.getSubject().getId());
         subjectQueryModel.setSubjectDesc(from.getSubject().getSubjectDesc());
-        
+
         lectureSubjectListQueryModel.setSubject(subjectQueryModel);
-        
 
         return lectureSubjectListQueryModel;
     }
@@ -199,31 +196,64 @@ public class Mapper
         }
         return lectureSubjectListQueryModels;
     }
-    
-    
+
     public static EntityClass FromPolicyEntityClassCommandModel(EntityClassCommandModel entityClassCommandModel, UserRole role)
     {
         EntityClass entityClass = new EntityClass();
-        
+
         entityClass.setFirstName(entityClassCommandModel.getFistName());
         entityClass.setSurname(entityClassCommandModel.getSurname());
         entityClass.setIdNumber(entityClassCommandModel.getIdNumber());
         entityClass.setGender(entityClassCommandModel.getGender());
-        
+
         entityClass.setUserRole(role);
-        
-        return entityClass;    
+
+        return entityClass;
     }
-    
+
     public static LogHistory fromLogHistoryCommandModel(LogHistoryCommandModel logHistoryCommandModel, EntityClass entityClass, TimeTable timeTable)
     {
         LogHistory logHistory = new LogHistory();
-        
+
         logHistory.setIsAttended(logHistoryCommandModel.isIsAttended());
-        
+
         logHistory.setEntityClass(entityClass);
         logHistory.setTimeTable(timeTable);
         return logHistory;
+    }
+
+    public static UserQueryModel toUserQueryModel(User from)
+    {
+        UserQueryModel user = new UserQueryModel();
+        user.setId(from.getId());
+        user.setUserName(from.getUserName());
+        
+        EntityQueryModel entityQueryModel = new EntityQueryModel();
+        entityQueryModel.setFistName(from.getEntityClass().getFirstName());
+        entityQueryModel.setGender(from.getEntityClass().getGender());
+        entityQueryModel.setIdNumber(from.getEntityClass().getIdNumber());
+        entityQueryModel.setId(from.getEntityClass().getId());
+        
+        UserRoleQueryModel userRoleQueryModel = new UserRoleQueryModel();
+        userRoleQueryModel.setId(from.getEntityClass().getUserRole().getId());
+        userRoleQueryModel.setRoleDesc(from.getEntityClass().getUserRole().getRoleDesc());
+        
+        entityQueryModel.setUserRole(userRoleQueryModel);
+        
+        user.setEntity(entityQueryModel);
+        
+        
+        return user;
+    }
+
+    public static List<UserQueryModel> toUserQueryModel(List<User> fromList)
+    {
+        List<UserQueryModel> userList = new ArrayList<UserQueryModel>();
+        for (User user : fromList)
+        {
+            userList.add(toUserQueryModel(user));
+        }
+        return userList;
     }
 
 }

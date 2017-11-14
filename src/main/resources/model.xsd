@@ -66,15 +66,28 @@ and open the template in the editor.
         </sequence>
     </complexType>
     
+    <element name="UserQueryModel">
+        <complexType>
+            <sequence>
+                <element name="id" type="long"></element>
+                <element name="userName" type="string"></element>
+                <element name="role" type="string"></element>
+                <element name="entity" minOccurs="0" maxOccurs="1"
+                                                     type="tns:EntityQueryModel" />
+            </sequence>
+        </complexType>
+    </element>
+
+    
     
     <element name="StudentSubjectListQueryModel" type="tns:StudentSubjectListQueryModel" />
     <complexType name="StudentSubjectListQueryModel">
         <sequence>
             <element name="id" type="long" />
             <element name="entity" minOccurs="0" maxOccurs="1"
-                                 type="tns:EntityQueryModel" />
+                     type="tns:EntityQueryModel" />
             <element name="subject" minOccurs="0" maxOccurs="1"
-                                 type="tns:SubjectQueryModel" />
+                     type="tns:SubjectQueryModel" />
         </sequence>
     </complexType>
         
@@ -83,9 +96,9 @@ and open the template in the editor.
         <sequence>
             <element name="id" type="long" />
             <element name="entity" minOccurs="0" maxOccurs="1"
-                                 type="tns:EntityQueryModel" />
+                     type="tns:EntityQueryModel" />
             <element name="subject" minOccurs="0" maxOccurs="1"
-                                 type="tns:SubjectQueryModel" />
+                     type="tns:SubjectQueryModel" />
         </sequence>
     </complexType>
         
@@ -95,9 +108,9 @@ and open the template in the editor.
             <element name="id" type="long" />
             <element name="isAttended" type="boolean" />
             <element name="entity" minOccurs="0" maxOccurs="1"
-                                 type="tns:EntityQueryModel" />
+                     type="tns:EntityQueryModel" />
             <element name="TimeTable" minOccurs="0" maxOccurs="1"
-                                 type="tns:TimeTableQueryModel" />
+                     type="tns:TimeTableQueryModel" />
         </sequence>
     </complexType>
         

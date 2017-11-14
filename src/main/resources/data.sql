@@ -37,6 +37,12 @@ insert into entity_class(first_name,surname,gender, id_number,user_role_id) valu
 insert into entity_class(first_name,surname,gender, id_number, user_role_id) values('Carol', 'Nonyane', 'Female', '6610',3);
 insert into entity_class(first_name,surname,gender, id_number,user_role_id) values('Mark', 'Mark', 'male', '5610',3);
 
+insert into login (user_name, password, enabled, entity_id) values('admin', 'secret',true, 1);
+insert into login (user_name, password, enabled, entity_id) values('student', 'secret', true, 2);
+insert into login (user_name, password, enabled, entity_id) values('lecture', 'secret', true, 3);
+
+
+
 insert into student_subject_list(entity_id,subject_id) values(3,3);
 insert into student_subject_list(entity_id,subject_id) values(2,2);
 
