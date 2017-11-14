@@ -28,25 +28,13 @@ public class Vanue
     @Column(name = "id")
     private Long Id;
 
-    @Column(name = "subject_desc")
-    private String subjectDesc;
+    @Column(name = "vanue_desc")
+    private String vanueDesc;
     
-    @OneToMany(mappedBy = "vanue", fetch = FetchType.EAGER)
-    private List<TimeTable> timeTableList;
 
     public Long getId()
     {
         return Id;
-    }
-
-    public List<TimeTable> getTimeTableList()
-    {
-        return timeTableList;
-    }
-
-    public void setTimeTableList(List<TimeTable> timeTableList)
-    {
-        this.timeTableList = timeTableList;
     }
 
     public void setId(Long Id)
@@ -54,13 +42,14 @@ public class Vanue
         this.Id = Id;
     }
 
-    public String getSubjectDesc()
+    public String getVanueDesc()
     {
-        return subjectDesc;
+        return vanueDesc;
     }
 
-    public void setSubjectDesc(String subjectDesc)
+    public void setVanueDesc(String vanueDesc)
     {
-        this.subjectDesc = subjectDesc;
+        this.vanueDesc = vanueDesc;
     }
+
 }

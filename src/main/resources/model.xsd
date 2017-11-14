@@ -59,56 +59,80 @@ and open the template in the editor.
             <element name="fistName" type="string"></element>
             <element name="surname" type="string"></element>
             <element name="idNumber" type="string"></element>
+            <element name="gender" type="string"></element>
+            <element name="userRole"  minOccurs="0" maxOccurs="1"
+                     type="tns:UserRoleQueryModel">
+            </element>
         </sequence>
     </complexType>
     
     
-    
-    
-    	<element name="StudentSubjectListQueryModel" type="tns:ClassListQueryModel" />
-	<complexType name="ClassListQueryModel">
-		<sequence>
-			<element name="id" type="long" />
-			<element name="entity" minOccurs="0" maxOccurs="1"
-				type="tns:EntityQueryModel" />
-                        <element name="subject" minOccurs="0" maxOccurs="1"
-				type="tns:SubjectQueryModel" />
-                </sequence>
+    <element name="StudentSubjectListQueryModel" type="tns:StudentSubjectListQueryModel" />
+    <complexType name="StudentSubjectListQueryModel">
+        <sequence>
+            <element name="id" type="long" />
+            <element name="entity" minOccurs="0" maxOccurs="1"
+                                 type="tns:EntityQueryModel" />
+            <element name="subject" minOccurs="0" maxOccurs="1"
+                                 type="tns:SubjectQueryModel" />
+        </sequence>
+    </complexType>
+        
+    <element name="LectureSubjectListQueryModel" type="tns:LectureSubjectListQueryModel" />
+    <complexType name="LectureSubjectListQueryModel">
+        <sequence>
+            <element name="id" type="long" />
+            <element name="entity" minOccurs="0" maxOccurs="1"
+                                 type="tns:EntityQueryModel" />
+            <element name="subject" minOccurs="0" maxOccurs="1"
+                                 type="tns:SubjectQueryModel" />
+        </sequence>
+    </complexType>
+        
+    <element name="logHistoryQueryModel" type="tns:logHistoryQueryModel" />
+    <complexType name="logHistoryQueryModel">
+        <sequence>
+            <element name="id" type="long" />
+            <element name="isAttended" type="boolean" />
+            <element name="entity" minOccurs="0" maxOccurs="1"
+                                 type="tns:EntityQueryModel" />
+            <element name="TimeTable" minOccurs="0" maxOccurs="1"
+                                 type="tns:TimeTableQueryModel" />
+        </sequence>
+    </complexType>
+        
+        
+        
+    <element name="logHistoryCommandModel" type="tns:logHistoryCommandModel" />
+    <complexType name="logHistoryCommandModel">
+        <sequence>
+            <element name="isAttended" type="boolean" />
+            <element name="entityId" type="long" />
+            <element name="timeTableId" type="long"  />
+        </sequence>
+    </complexType>
+        
+        
+    <element name="EntityClassCommandModel">
+        <complexType>
+            <sequence>
+                <element name="fistName" type="string"></element>
+                <element name="surname" type="string"></element>
+                <element name="gender" type="string"></element>
+                <element name="idNumber" type="string"></element>
+                <element name="role_id" type="long"></element>
+            </sequence>
         </complexType>
+    </element>
         
-        <element name="LectureSubjectListQueryModel" type="tns:LectureSubjectListQueryModel" />
-	<complexType name="LectureSubjectListQueryModel">
-		<sequence>
-			<element name="id" type="long" />
-			<element name="entity" minOccurs="0" maxOccurs="1"
-				type="tns:EntityQueryModel" />
-                        <element name="subject" minOccurs="0" maxOccurs="1"
-				type="tns:SubjectQueryModel" />
-                </sequence>
+        
+    <element name="ScannerQueryModel">
+        <complexType>
+            <sequence>
+                <element name="entityId" type="long">
+                </element>
+            </sequence>
         </complexType>
-        
-       <element name="logHistoryQueryModel" type="tns:logHistoryQueryModel" />
-	<complexType name="logHistoryQueryModel">
-		<sequence>
-			<element name="id" type="long" />
-                        <element name="isAttended" type="boolean" />
-			<element name="entity" minOccurs="0" maxOccurs="1"
-				type="tns:EntityQueryModel" />
-                        <element name="vanue" minOccurs="0" maxOccurs="1"
-				type="tns:VanueQueryModel" />
-                </sequence>
-        </complexType>
-        
-        
-       <element name="ScannerCommandModel">
-		<complexType>
-			<sequence>
-				<element name="entity" 
-                                         minOccurs="0" maxOccurs="1"
-                                         type="tns:EntityQueryModel">
-                                </element>
-			</sequence>
-		</complexType>
-	</element>
+    </element>
                         
 </schema>

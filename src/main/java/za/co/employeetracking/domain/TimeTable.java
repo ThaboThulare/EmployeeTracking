@@ -43,22 +43,9 @@ public class TimeTable
     @JoinColumn(name = "vanue_id")
     private Vanue vanue;
 
-    public List<LogHistory> getLogHistoryList()
-    {
-        return logHistoryList;
-    }
-
-    public void setLogHistoryList(List<LogHistory> logHistoryList)
-    {
-        this.logHistoryList = logHistoryList;
-    }
-
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
-
-    @OneToMany(mappedBy = "timeTable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LogHistory> logHistoryList;
 
     public Long getId()
     {

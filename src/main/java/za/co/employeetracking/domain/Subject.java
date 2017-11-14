@@ -32,23 +32,11 @@ public class Subject
     @Column(name = "subject_desc")
     private String subjectDesc;
     
-    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
-    private List<TimeTable> timeTableList;
-
     public Long getId()
     {
         return id;
     }
 
-    public List<TimeTable> getTimeTableList()
-    {
-        return timeTableList;
-    }
-
-    public void setTimeTableList(List<TimeTable> timeTableList)
-    {
-        this.timeTableList = timeTableList;
-    }
 
     public void setId(Long id)
     {

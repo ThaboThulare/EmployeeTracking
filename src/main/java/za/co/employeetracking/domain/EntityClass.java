@@ -45,37 +45,10 @@ public class EntityClass
     private String idNumber;
 
     @ManyToOne
-    @JoinColumn(name = "user_role")
+    @JoinColumn(name = "user_role_id")
     private UserRole userRole;
 
-    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LectureSubjectList> lectureSubjectList;
 
-    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<StudentSubjectList> studentSubjectList;
-
-    @OneToMany(mappedBy = "entityClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LogHistory> logHistoryList;
-
-    public List<LectureSubjectList> getLectureSubjectList()
-    {
-        return lectureSubjectList;
-    }
-
-    public void setLectureSubjectList(List<LectureSubjectList> lectureSubjectList)
-    {
-        this.lectureSubjectList = lectureSubjectList;
-    }
-
-    public List<StudentSubjectList> getStudentSubjectList()
-    {
-        return studentSubjectList;
-    }
-
-    public void setStudentSubjectList(List<StudentSubjectList> studentSubjectList)
-    {
-        this.studentSubjectList = studentSubjectList;
-    }
 
     public UserRole getUserRole()
     {
@@ -137,13 +110,4 @@ public class EntityClass
         this.idNumber = idNumber;
     }
 
-    public List<LogHistory> getLogHistoryList()
-    {
-        return logHistoryList;
-    }
-
-    public void setLogHistoryList(List<LogHistory> logHistoryList)
-    {
-        this.logHistoryList = logHistoryList;
-    }
 }

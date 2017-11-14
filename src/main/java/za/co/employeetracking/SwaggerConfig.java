@@ -16,21 +16,26 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author User
  */
+@Configuration
 @EnableSwagger
-public class SwaggerConfig {
+public class SwaggerConfig
+{
+
     @Autowired
     private SpringSwaggerConfig springSwaggerConfig;
 
     @Bean
-    public SwaggerSpringMvcPlugin customImplementation() {
+    public SwaggerSpringMvcPlugin customImplementation()
+    {
         return new SwaggerSpringMvcPlugin(this.springSwaggerConfig).apiInfo(
                 apiInfo()).includePatterns("/.*");
     }
 
-    private ApiInfo apiInfo() {
+    private ApiInfo apiInfo()
+    {
         ApiInfo apiInfo = new ApiInfo("Employee Tracking System API", "API for Employee Tracking System",
-                "Employee Tracking System API terms of service", "thabothulare68@gmail.com",
-                "Employee Tracking System API Licence Type", "Employee Tracking System API License URL");
+                                      "Employee Tracking System API terms of service", "thabothulare68@gmail.com",
+                                      "Employee Tracking System API Licence Type", "Employee Tracking System API License URL");
         return apiInfo;
     }
 }

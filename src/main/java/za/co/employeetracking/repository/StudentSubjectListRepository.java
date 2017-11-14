@@ -12,7 +12,7 @@ import za.co.employeetracking.domain.StudentSubjectList;
  *
  * @author User
  */
-public interface ClassListRepository extends JpaRepository<StudentSubjectList, Long>
+public interface StudentSubjectListRepository extends JpaRepository<StudentSubjectList, Long>
 {
     
 }
