@@ -65,7 +65,7 @@ public class SecurityService {
             LOGGER.info("Role : " + user.getEntityClass().getUserRole().getRoleDesc());
             String token = user.getUserName() + ":" + user.getPassword();
             MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-            if (user.getEntityClass().getUserRole().getRoleDesc().equals("Admin")) {
+            if (user.getEntityClass().getUserRole().getRoleDesc().equals("admin")) {
                 headers.add("Location", "/attendance/admin.html");
                 headers.add("Set-Cookie", "token=" + new String(Base64.encode(token.getBytes())));
                 headers.add("Set-Cookie", "state=; Max-Age=0");
@@ -73,9 +73,18 @@ public class SecurityService {
                 headers.add("Pragma", "no-cache");
                 headers.add("Expires", "0");
 
-            } else if (user.getEntityClass().getUserRole().getRoleDesc().equals("Lecture")) {
+            } else if (user.getEntityClass().getUserRole().getRoleDesc().equals("lecture")) {
 
                 headers.add("Location", "/attendance/lecture.html");
+                headers.add("Set-Cookie", "token=" + new String(Base64.encode(token.getBytes())));
+                headers.add("Set-Cookie", "state=; Max-Age=0");
+                headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+                headers.add("Pragma", "no-cache");
+                headers.add("Expires", "0");
+            }
+            else if (user.getEntityClass().getUserRole().getRoleDesc().equals("student")) {
+
+                headers.add("Location", "/attendance/student.html");
                 headers.add("Set-Cookie", "token=" + new String(Base64.encode(token.getBytes())));
                 headers.add("Set-Cookie", "state=; Max-Age=0");
                 headers.add("Cache-Control", "no-cache, no-store, must-revalidate");

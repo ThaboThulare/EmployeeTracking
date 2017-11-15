@@ -19,7 +19,7 @@
 
     <body ng-controller="adminCtrl" ng-init="init()" style="background: silver;">
 
-        <div id="wrapper" class="container-fluid" > 
+        <div ng-if="session" id="wrapper" class="container-fluid" > 
 
             <div id="header" ng-include="'/html/entity-header.html'"></div>
 

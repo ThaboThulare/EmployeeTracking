@@ -1,10 +1,10 @@
-var admin = angular.module('admin', ['ngRoute']);
+var admin = angular.module('admin', ['ngRoute', 'ngCookies']);
 
 admin.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
                 .when('/entities', {
                     'templateUrl': '/html/entities.html',
-                    'controller': 'adminCtrl'
+                    'controller': 'entityCtrl'
                 }).when('/register', {
             'templateUrl': '/html/register.html',
             'controller': 'registerCtrl'
@@ -15,8 +15,42 @@ admin.config(['$routeProvider', function ($routeProvider) {
     }]);
 
 
+admin.controller('adminCtrl', function ($scope, $rootScope, $http, $cookies, $window) {
 
-admin.controller('adminCtrl', function ($scope, $rootScope, $http, $filter) {
+    $scope.init = function () {
+        if ($cookies.token == undefined) {
+            
+            $window.location.href = "/login?state=" + encodeURIComponent($window.location.href);
+        } else {
+            $scope.validate($cookies.token);
+            
+        }
+    };
+
+    $scope.validate = function (token) {
+        $http({
+            method: 'POST',
+            url: '/validate',
+            headers: {
+                "Content-Type": "text/html"
+            },
+            data: token
+        }).success(function (data, status) {
+            $rootScope.session = data;
+          
+            if ($rootScope.session.role != "admin"){
+                $window.location.href = "/logout";
+            }
+            
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $cookies.token;
+        }).error(function (error, status) {
+            $window.location.href = "/logout";
+        });
+    };
+
+});
+
+admin.controller('entityCtrl', function ($scope, $rootScope, $http, $filter) {
 
 
     $scope.init = function () {
@@ -99,6 +133,7 @@ admin.controller('registerCtrl', function ($scope, $rootScope, $http, $routePara
 
             console.log($scope.subjects);
             $scope.entities.subjects = $scope.subjects;
+            $scope.entities.isFingerPrint = false;
             console.log($scope.entities.subjects)
             $http({
                 url: '/api/entity',

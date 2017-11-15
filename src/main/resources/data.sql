@@ -26,10 +26,10 @@ insert into vanue(vanue_desc) values('Room 4');
 
 
 
-insert into entity_class(first_name,surname,gender, id_number,user_role_id) values('Thabo', 'Thulare', 'male', '9308',1);
-insert into entity_class(first_name,surname,gender, id_number,user_role_id) values('Nokwanda', 'Zuke', 'Female', '9308',2);
-insert into entity_class(first_name,surname,gender, id_number, user_role_id) values('Carol', 'Nonyane', 'Female', '6610',3);
-insert into entity_class(first_name,surname,gender, id_number,user_role_id) values('Mark', 'Mark', 'male', '5610',3);
+insert into entity_class(first_name,surname,gender, id_number,is_finger_print,user_role_id) values('Thabo', 'Thulare', 'male', '9308',true,1);
+insert into entity_class(first_name,surname,gender, id_number,is_finger_print,user_role_id) values('Nokwanda', 'Zuke', 'Female', '9308',true,2);
+insert into entity_class(first_name,surname,gender, id_number,is_finger_print, user_role_id) values('Carol', 'Nonyane', 'Female', '6610',false,3);
+insert into entity_class(first_name,surname,gender, id_number,is_finger_print,user_role_id) values('Mark', 'Mark', 'male', '5610',true,3);
 
 insert into subject(subject_desc, entity_id) values('Network Systems', 1);
 insert into subject(subject_desc, entity_id) values('Project Design', 2);
@@ -46,13 +46,6 @@ insert into login (user_name, password, enabled, entity_id) values('admin', 'sec
 insert into login (user_name, password, enabled, entity_id) values('student', 'secret', true, 2);
 insert into login (user_name, password, enabled, entity_id) values('lecture', 'secret', true, 3);
 
-
-
-insert into student_subject_list(entity_id,subject_id) values(3,3);
-insert into student_subject_list(entity_id,subject_id) values(2,2);
-
-insert into lecture_subject_list(entity_id,subject_id) values(3, 3);
-insert into lecture_subject_list(entity_id,subject_id) values(3, 1);
 
 insert into log_history(time_table_id, entity_id,is_attended ) values(1,2,true);
 insert into log_history(time_table_id, entity_id,is_attended) values(2,3, false);
