@@ -7,6 +7,7 @@ package za.co.employeetracking;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,6 +146,24 @@ public class Services
 
         return Mapper.toEntityQueryModel(entityClass);
     }
+    
+        @RequestMapping(value = "api/register/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void getFingerPeint(@PathVariable("id") Long id) throws ParseException
+    {
+           
+    }
+    
+    	@Transactional
+	@RequestMapping(value = "api/updateEntity/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/html")
+	public void rejectQuotationRequest(@PathVariable("id") Long id) {
+            
+                EntityClass entityClass = entityRepository.findOne(id);
+                
+                entityClass.setIsFingerPrint(true);
+                entityRepository.save(entityClass);
+
+		log.info("New status :" + entityClass.isIsFingerPrint());
+	}
     
     
     

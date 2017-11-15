@@ -1,16 +1,53 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div  ng-init="init()">
+    <div class="row" style="padding: 25px;">
+        <div class="col-md-12">
+            <div class="input-group input-group-lg" style="box-shadow: 0 0 30px black;">
+                <span class="input-group-addon" id="sizing-addon1">Entities</span>
+                <input ng-model="entity" type="text" class="form-control" placeholder="Search..." aria-describedby="sizing-addon1">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding: 25px;" >
+        <div class="col-md-12">
+            <div class="panel panel-default" style="box-shadow: 0 0 30px black;">
+                <div class="panel-body">
+                    <div>          
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Role</th>
+                                    <th>ID</th>
+                                    <th>Gender</th>
+                                    <th>Finger Print Status</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="entity in lectureList | filter:entity">
+                                <tr>
+                                    <td>{{$index + 1}}</td>
+                                    <td id="q_{{index}}">{{entity.fistName}}</td>
+                                    <td id="q_{{index}}">{{entity.surname}}</td>
+                                    <td id="q_{{index}}">{{entity.userRole.roleDesc}}</td>
+                                    <td id="q_{{index}}">{{entity.idNumber}}</td>
+                                    <td id="q_{{index}}">{{entity.gender}}</td>
+                                    <td ng-if="!entity.isFingerPrint"><a role="button" class="btn btn-info" ng-href="#/registerFinger/{{entity.id}}">Register Finger Print</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

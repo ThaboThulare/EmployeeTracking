@@ -36,7 +36,7 @@
                                     <td id="q_{{index}}">{{entity.userRole.roleDesc}}</td>
                                     <td id="q_{{index}}">{{entity.idNumber}}</td>
                                     <td id="q_{{index}}">{{entity.gender}}</td>
-                                    <td ng-if="!entity.isFingerPrint"><a role="button" class="btn btn-info" ng-href="#/registerFinger/{{entity.id}}">Register Finger Print</a></td>
+                                    <td ng-if="!entity.isFingerPrint"><a role="button" class="btn btn-info" type="submit" ng-click="getFingerPrint(entity.id)">Register Finger Print</a></td>
                                 </tr>
                             </tbody>
                         </table>
