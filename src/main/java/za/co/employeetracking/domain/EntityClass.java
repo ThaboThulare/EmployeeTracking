@@ -43,10 +43,36 @@ public class EntityClass
 
     @Column(name = "id_number")
     private String idNumber;
+    
+    @Column(name = "is_finger_print")
+    private boolean isFingerPrint;
 
     @ManyToOne
     @JoinColumn(name = "user_role_id")
     private UserRole userRole;
+    
+    @OneToMany(mappedBy = "entityClass")
+    private List<Subject> subject;
+
+    public boolean isIsFingerPrint()
+    {
+        return isFingerPrint;
+    }
+
+    public void setIsFingerPrint(boolean isFingerPrint)
+    {
+        this.isFingerPrint = isFingerPrint;
+    }
+
+    public List<Subject> getSubject()
+    {
+        return subject;
+    }
+
+    public void setSubject(List<Subject> subject)
+    {
+        this.subject = subject;
+    }
 
 
 

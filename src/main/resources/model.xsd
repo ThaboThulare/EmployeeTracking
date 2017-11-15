@@ -59,9 +59,18 @@ and open the template in the editor.
             <element name="fistName" type="string"></element>
             <element name="surname" type="string"></element>
             <element name="idNumber" type="string"></element>
-            <element name="gender" type="string"></element>
+            <element name="gender" type="string"></element>            
+            <element name="isFingerPrint" type="boolean"></element>            
             <element name="userRole"  minOccurs="0" maxOccurs="1"
                      type="tns:UserRoleQueryModel">
+            </element>
+            <element name="subjects" minOccurs="0" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="id" type="long" />
+                        <element name="subjectDesc" type="string" />
+                    </sequence>
+                </complexType>
             </element>
         </sequence>
     </complexType>
@@ -73,7 +82,7 @@ and open the template in the editor.
                 <element name="userName" type="string"></element>
                 <element name="role" type="string"></element>
                 <element name="entity" minOccurs="0" maxOccurs="1"
-                                                     type="tns:EntityQueryModel" />
+                         type="tns:EntityQueryModel" />
             </sequence>
         </complexType>
     </element>
@@ -133,7 +142,15 @@ and open the template in the editor.
                 <element name="surname" type="string"></element>
                 <element name="gender" type="string"></element>
                 <element name="idNumber" type="string"></element>
+                <element name="isFingerPrint" type="boolean"></element>
                 <element name="role_id" type="long"></element>
+                <element name="subjects" minOccurs="0" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="subjectDesc" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
             </sequence>
         </complexType>
     </element>

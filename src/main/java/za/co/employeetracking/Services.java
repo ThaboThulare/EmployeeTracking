@@ -19,15 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import scala.annotation.meta.field;
 import za.co.employeetracking.domain.EntityClass;
-import za.co.employeetracking.domain.LectureSubjectList;
 import za.co.employeetracking.domain.LogHistory;
-import za.co.employeetracking.domain.StudentSubjectList;
 import za.co.employeetracking.domain.Subject;
 import za.co.employeetracking.domain.TimeTable;
 import za.co.employeetracking.domain.UserRole;
 import za.co.employeetracking.domain.Vanue;
 import za.co.employeetracking.mapper.Mapper;
 import static za.co.employeetracking.mapper.Mapper.FromPolicyEntityClassCommandModel;
+import static za.co.employeetracking.mapper.Mapper.fromSubjectCommandModel;
 import static za.co.employeetracking.mapper.Mapper.toSubjectQueryModel;
 import static za.co.employeetracking.mapper.Mapper.toUserRoleQueryModel;
 import static za.co.employeetracking.mapper.Mapper.toVanueQueryModel;
@@ -41,9 +40,7 @@ import za.co.employeetracking.model.SubjectQueryModel;
 import za.co.employeetracking.model.UserRoleQueryModel;
 import za.co.employeetracking.model.VanueQueryModel;
 import za.co.employeetracking.repository.EntityRepository;
-import za.co.employeetracking.repository.LectureSubjectListRepository;
 import za.co.employeetracking.repository.LogHistoryRepository;
-import za.co.employeetracking.repository.StudentSubjectListRepository;
 import za.co.employeetracking.repository.SubjectRepository;
 import za.co.employeetracking.repository.TimeTableRepository;
 import za.co.employeetracking.repository.UserRoleRepository;
@@ -75,12 +72,6 @@ public class Services
 
     @Autowired
     private TimeTableRepository timeTableRepository;
-    
-    @Autowired
-    private StudentSubjectListRepository studentSubjectListRepository;
-    
-    @Autowired
-    private LectureSubjectListRepository lectureSubjectListRepository;
     
 
     @RequestMapping(value = "api/userRoles", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -117,7 +108,7 @@ public class Services
     }
 
     @Transactional
-    @RequestMapping(value = "api/entity", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "text/html")
+    @RequestMapping(value = "api/entity", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Long registerEntity(@RequestBody EntityClassCommandModel entityClassCommandModel)
     {
 
@@ -125,6 +116,9 @@ public class Services
 
         EntityClass entityClass = FromPolicyEntityClassCommandModel(entityClassCommandModel, role);
         entityClass = entityRepository.save(entityClass);
+                      
+        List<Subject> entitySubjects = fromSubjectCommandModel(entityClassCommandModel, entityClass);
+        subjectRepository.save(entitySubjects);
 
         return entityClass.getId();
     }
@@ -167,34 +161,25 @@ public class Services
     @RequestMapping(value = "api/student/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public StudentSubjectListQueryModel getStudentById(@PathVariable("id") Long id) throws ParseException
     {
-        StudentSubjectList studentSubjectList = studentSubjectListRepository.findOne(id);
-        
-        return Mapper.toStudentSubjectListQueryModel(studentSubjectList);
+        return null;
     }
     
     @RequestMapping(value = "api/students", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<StudentSubjectListQueryModel> getAllStudents() throws ParseException
     {
-         List<StudentSubjectList> subjectLists = studentSubjectListRepository.findAll();
-         
-        return Mapper.toStudentSubjectListQueryModel(subjectLists);
+         return null;
     }
 
     @RequestMapping(value = "api/lecture/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public LectureSubjectListQueryModel getLectureById(@PathVariable("id") Long id) throws ParseException
     {
-        LectureSubjectList lectureSubjectList = lectureSubjectListRepository.findOne(id);
-        
-        return Mapper.toLectureSubjectListQueryModel(lectureSubjectList);
+        return null;
     }
     
     @RequestMapping(value = "api/lectures", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LectureSubjectListQueryModel> getAllLectures() throws ParseException
     {
-        List<LectureSubjectList> lectureSubjectList = lectureSubjectListRepository.findAll();
-        
-        
-        return Mapper.toLectureSubjectListQueryModel(lectureSubjectList);
+        return null;
     }
     
     

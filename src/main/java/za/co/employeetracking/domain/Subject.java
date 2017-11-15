@@ -5,14 +5,13 @@
  */
 package za.co.employeetracking.domain;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,6 +30,20 @@ public class Subject
     
     @Column(name = "subject_desc")
     private String subjectDesc;
+    
+    @ManyToOne
+    @JoinColumn(name = "entity_id")
+    private EntityClass entityClass;
+
+    public EntityClass getEntityClass()
+    {
+        return entityClass;
+    }
+
+    public void setEntityClass(EntityClass entityClass)
+    {
+        this.entityClass = entityClass;
+    }
     
     public Long getId()
     {

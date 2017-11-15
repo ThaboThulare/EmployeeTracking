@@ -3,21 +3,23 @@
 
     <div  class="row">
         <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+        
         <div class="col-md-12">
+            
             <div class="form-group">
+                <form data-toggle="validator" role="form" name="form" id="form">
                 <label class="control-label">First Name</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+                    <input  name="first_name" placeholder="First Name" class="form-control" ng-model="entities.fistName" type="text">
                 </div>
-
 
 
                 <label class="control-label" >Surname</label> 
                 <div class="inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="surname" placeholder="Surname" class="form-control"  type="text">
+                        <input name="surname" placeholder="Surname" class="form-control"  ng-model="entities.surname"  type="text">
                     </div>
                 </div>
 
@@ -25,34 +27,92 @@
                 <div class="inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="idNumber" placeholder="ID Number" class="form-control"  type="text">
+                        <input name="idNumber" placeholder="ID Number" class="form-control" ng-model="entities.idNumber"  type="text">
                     </div>
                 </div>
 
                 <label class="control-label">Gender</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="department" class="form-control selectpicker">
-                        <option value="">Select gender</option>
+                    <select name="gender" ng-model="entities.gender" class="form-control selectpicker">
+                        <option value="" disabled>Select gender</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                 </div>
 
-                <label class="control-label">Gender</label>
+                <label class="control-label">Access Role</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="department" class="form-control selectpicker">
-                        <option value="">Role</option>
+                    <select name="role" ng-model="entities.roleId" class="form-control selectpicker">
+                        <option value="" disabled>Select Role</option>
                         <option value='1'>Admin</option>
                         <option value='2'>Lecture</option>
                         <option value='3'>Student</option>
                     </select>
                 </div>
-                <br/>
+
+                <div class="input-group" ng-repeat="subject in subjets">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+                    <select name="role" ng-model="entities.roleId" class="form-control selectpicker">
+                        <option value="" disabled>Select subject</option>
+                        <option value='Network System'>Network System</option>
+                        <option value='Project Design'>Project Design</option>
+                        <option value='Database'>Database</option>
+                        <option value='Mathematics'>Mathematics</option>
+                    </select>
+                </div>
+
+
+
+
+                <label class="control-label">Please click add Subjects To enroll for a subject / lecture </label>
+
+                <div class="input-group" >
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="subject in subjects">
+                                <td>
+                                    <select class="form-control"
+                                            ng-model="subject.subjectDesc" required>
+                                        <option value="" disabled selected>Select subject</option>
+                                        <option value='Network System'>Network System</option>
+                                        <option value='Project Design'>Project Design</option>
+                                        <option value='Database'>Database</option>
+                                        <option value='Mathematics'>Mathematics</option>
+                                    </select></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="form-group">
+                                        <div class="pull-left">
+                                            <label>Do you have more subjects?</label>
+                                        </div>
+                                        <div class="pull-right">
+                                            <button class="btn btn-info btn-sm"
+                                                    ng-click="addMoreSubject()">Add More Subject</button>
+                                            <button class="btn btn-warning btn-sm"
+                                                    ng-click="removeMoreSubject()">Remove Subject</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <br/>              
+                </form>
                 <div >
-                    <button type="submit" form="form" class="btn btn-info"  ng-click="register(form)"
-                            >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="submit" form="form" class="btn btn-info"  ng-click="registerClient(form)"
+                            >Register <span class="glyphicon glyphicon-send"></span></button>
 
                 </div>
 

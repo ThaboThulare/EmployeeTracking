@@ -22,10 +22,7 @@ create table vanue(
     vanue_desc varchar(45) not null
 );
 
-create table subject(
-     id integer auto_increment not null primary key,
-     subject_desc varchar(45) not null
-);
+
 
 create table entity_class(
     id integer auto_increment not null primary key,
@@ -33,8 +30,16 @@ create table entity_class(
     surname varchar(45) not null,
     gender varchar(10) not null,
     id_number varchar(13) not null,
+    is_finger_print boolean not null,
     user_role_id integer not null,
     constraint user_role_fk1 foreign key (user_role_id) references user_role (id)
+);
+
+create table subject(
+    id integer auto_increment not null primary key,
+    subject_desc varchar(45) not null,
+        entity_id integer not null,
+    constraint entity_class_fk6 foreign key (entity_id) references entity_class (id)
 
 );
 
@@ -57,23 +62,6 @@ create table time_table(
     constraint vanue_fk1 foreign key (vanue_id) references vanue (id),
     constraint subject_fk1 foreign key (subject_id) references subject (id),
 );
-
-create table student_subject_list(
-    id integer auto_increment not null primary key,
-    entity_id integer not null,
-    subject_id integer not null,
-    constraint entity_class_fk2 foreign key (entity_id) references entity_class (id),
-    constraint subject_fk2 foreign key (subject_id) references subject (id),
-);
-
-create table lecture_subject_list(
-    id integer auto_increment not null primary key,
-    entity_id integer not null,
-    subject_id integer not null,
-    constraint subject_fk3 foreign key (subject_id) references subject (id),
-    constraint entity_fk3 foreign key (entity_id) references entity_class (id)
-);
-
 
 create table log_history(
       id integer auto_increment not null primary key,
